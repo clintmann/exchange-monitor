@@ -109,5 +109,4 @@ venv.bak/
 /.env
 main_old.py
 run_old.sh
-/Procfile
-/runtime.txt
+
