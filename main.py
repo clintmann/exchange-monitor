@@ -26,13 +26,13 @@ from check_MSgraph import check_activedir_user, check_auto_reply
 from mediator_sync import sync_mediator
 from mediator_post import post_mediator
 
-tenant = os.environ.get['TENANT']
-client_id = os.environ.get['CLIENT_ID']
-client_secret = os.environ.get['CLIENT_SECRET']
-mediator_ip = os.environ.get['MEDIATOR_IP']
-mediator_port = os.environ.get['MEDIATOR_PORT']
-listener_ip = os.environ.get['LISTENER_IP']
-listener_port = os.environ.get['LISTENER_PORT']
+tenant = os.environ['TENANT']
+client_id = os.environ['CLIENT_ID']
+client_secret = os.environ['CLIENT_SECRET']
+mediator_ip = os.environ['MEDIATOR_IP']
+mediator_port = os.environ['MEDIATOR_PORT']
+listener_ip = os.environ['LISTENER_IP']
+listener_port = os.environ['LISTENER_PORT']
 
 resource = "https://graph.microsoft.com"
 grant_type = "client_credentials"
