@@ -43,8 +43,8 @@ graph_users_url = "https://graph.microsoft.com/v1.0/users/"
 mediator_url = "http://" + mediator_ip + ":" + mediator_port + "/api/setstatus"
 mediator_sync_url = "http://" + mediator_ip + ":" + mediator_port + \
                     "/api/setup"
-listener_url = "http://" + listener_ip + "/users"
-listener_mon_url = "http://" + listener_ip + "/monitor"
+# listener_url = "http://" + listener_ip + "/users"
+# listener_mon_url = "http://" + listener_ip + "/monitor"
 
 
 app = Flask(__name__)
