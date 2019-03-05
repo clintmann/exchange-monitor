@@ -31,8 +31,8 @@ client_id = os.environ['CLIENT_ID']
 client_secret = os.environ['CLIENT_SECRET']
 mediator_ip = os.environ['MEDIATOR_IP']
 mediator_port = os.environ['MEDIATOR_PORT']
-listener_ip = os.environ['LISTENER_IP']
-listener_port = os.environ['LISTENER_PORT']
+# listener_ip = os.environ['LISTENER_IP']
+# listener_port = os.environ['LISTENER_PORT']
 
 resource = "https://graph.microsoft.com"
 grant_type = "client_credentials"
