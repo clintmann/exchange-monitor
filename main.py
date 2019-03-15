@@ -41,8 +41,7 @@ auth_base_url = "https://login.microsoftonline.com/"
 oauth_url_v1 = auth_base_url + tenant + str("/oauth2/token")
 graph_users_url = "https://graph.microsoft.com/v1.0/users/"
 mediator_url = "http://" + mediator_ip + ":" + mediator_port + "/api/setstatus"
-mediator_sync_url = "http://" + mediator_ip + ":" + mediator_port + \
-                    "/api/setup"
+mediator_sync_url = "http://" + mediator_ip + ":" + mediator_port + "/api/setup"
 # listener_url = "http://" + listener_ip + "/users"
 # listener_mon_url = "http://" + listener_ip + "/monitor"
 
@@ -214,6 +213,7 @@ def process_users():
 #  sync with MEDIATOR
 sync_resp = sync_mediator(mediator_sync_url)
 resp = sync_resp['result']
+print("response", resp)
 
 if resp == 'True':
     print('Mediator Server sync SUCCESSFUL.')
