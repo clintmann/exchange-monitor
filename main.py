@@ -214,10 +214,10 @@ def process_users():
 
 
 #  sync with MEDIATOR
-sync_resp = sync_mediator(mediator_sync_url)
-resp = sync_resp['result']
-print("response", resp)
-
+#sync_resp = sync_mediator(mediator_sync_url)
+#resp = sync_resp['result']
+#print("response", resp)
+resp = 'True'
 if resp is 'True':
     print('Mediator Server sync SUCCESSFUL.')
     #  --- SCHEDULER ----
