@@ -218,7 +218,7 @@ sync_resp = sync_mediator(mediator_sync_url)
 resp = sync_resp['result']
 print("response", resp)
 
-if resp == 'True':
+if resp is 'True':
     print('Mediator Server sync SUCCESSFUL.')
     #  --- SCHEDULER ----
     scheduler = BackgroundScheduler(daemon=True)
@@ -243,6 +243,5 @@ else:
 
 if __name__ == '__main__':
 
-    time.sleep(60)  # Delay for 1 minute (60 seconds).
     # Start Flask
     app.run(debug=True, host='0.0.0.0', port=5000)
