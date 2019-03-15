@@ -17,15 +17,16 @@ import datetime
 def sync_mediator(sync_url):
     print('In Mediator Sync...')
     start = datetime.datetime.now()
+    print('START sync', start)
+
     headers = {
         'Content-Type': 'application/json'
     }
 
     response = requests.post(sync_url, headers=headers)
-    end = datetime.datetime.now()
 
-    print('START', start)
-    print('END', end)
+    end = datetime.datetime.now()
+    print('END sync', end)
 
     resp = response.json()
 
