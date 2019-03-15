@@ -41,7 +41,8 @@ auth_base_url = "https://login.microsoftonline.com/"
 oauth_url_v1 = auth_base_url + tenant + str("/oauth2/token")
 graph_users_url = "https://graph.microsoft.com/v1.0/users/"
 mediator_url = "http://" + mediator_ip + ":" + mediator_port + "/api/setstatus"
-mediator_sync_url = "http://" + mediator_ip + ":" + mediator_port + "/api/setup"
+mediator_sync_url = "http://" + mediator_ip + ":" + mediator_port + \
+                    "/api/setup"
 # listener_url = "http://" + listener_ip + "/users"
 # listener_mon_url = "http://" + listener_ip + "/monitor"
 
@@ -241,4 +242,4 @@ else:
 if __name__ == '__main__':
 
     # Start Flask
-    app.run(debug=False, host='127.0.0.1', port=5000)
+    app.run(debug=False, host='0.0.0.0', port=5000)
