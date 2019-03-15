@@ -216,7 +216,7 @@ sync_resp = sync_mediator(mediator_sync_url)
 resp = sync_resp['result']
 print("response", resp)
 
-if resp is 'True':
+if resp == 'True':
     print('Mediator Server sync SUCCESSFUL.')
     #  --- SCHEDULER ----
     scheduler = BackgroundScheduler(daemon=True)
