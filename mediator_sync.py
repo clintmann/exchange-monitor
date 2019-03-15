@@ -23,7 +23,7 @@ def sync_mediator(sync_url):
         'Content-Type': 'application/json'
     }
 
-    response = requests.post(sync_url, headers=headers)
+    response = requests.post(sync_url, headers=headers, timeout=35)
 
     end = datetime.datetime.now()
     print('END sync', end)
