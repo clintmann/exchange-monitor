@@ -18,7 +18,6 @@ a POST will be made to the Mediator application.
 
 import json
 import os
-import time
 from apscheduler.schedulers.background import BackgroundScheduler
 from flask import Flask, request, jsonify
 from datetime import datetime
