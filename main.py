@@ -18,6 +18,7 @@ a POST will be made to the Mediator application.
 
 import json
 import os
+import time
 from apscheduler.schedulers.background import BackgroundScheduler
 from flask import Flask, request, jsonify
 from datetime import datetime
@@ -55,7 +56,8 @@ VMOusers = []
 @app.route("/")
 def main():
     print(str(datetime.now())+": Processing /monitor functionality")
-    return jsonify({"result": "True"}), 200
+    # return jsonify({"result": "True"}), 200
+    return "EXCHANGE OOO MAIN PAGE"
 
 
 @app.route("/monitor", methods=['POST'])
@@ -214,7 +216,7 @@ def process_users():
 #  sync with MEDIATOR
 sync_resp = sync_mediator(mediator_sync_url)
 resp = sync_resp['result']
-#print("response", resp)
+print("response", resp)
 
 if resp == 'True':
     print('Mediator Server sync SUCCESSFUL.')
@@ -241,5 +243,6 @@ else:
 
 if __name__ == '__main__':
 
+    time.sleep(60)  # Delay for 1 minute (60 seconds).
     # Start Flask
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0', port=5000)
