@@ -15,6 +15,7 @@ import requests
 
 def sync_mediator(sync_url):
     print('In Mediator Sync...')
+    print('sync_url', sync_url)
 
     headers = {
         'Content-Type': 'application/json'
@@ -23,5 +24,7 @@ def sync_mediator(sync_url):
     response = requests.post(sync_url, headers=headers)
 
     resp = response.json()
+
+    print('response',resp)
 
     return resp
