@@ -55,8 +55,7 @@ VMOusers = []
 @app.route("/")
 def main():
     print(str(datetime.now())+": Processing /monitor functionality")
-    #return jsonify({"result": "True"}), 200
-    return "EXCHANGE OOO HOME PAGE"
+    return jsonify({"result": "True"}), 200
 
 
 @app.route("/monitor", methods=['POST'])
@@ -215,7 +214,7 @@ def process_users():
 #  sync with MEDIATOR
 sync_resp = sync_mediator(mediator_sync_url)
 resp = sync_resp['result']
-print("response", resp)
+#print("response", resp)
 
 if resp == 'True':
     print('Mediator Server sync SUCCESSFUL.')
