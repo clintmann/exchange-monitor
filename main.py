@@ -23,7 +23,7 @@ from flask import Flask, request, jsonify
 from datetime import datetime
 from get_token import auth_token
 from check_MSgraph import check_activedir_user, check_auto_reply
-from mediator_sync import sync_mediator
+from mediator_sync import mediator_status, sync_mediator
 from mediator_post import post_mediator
 
 tenant = os.environ['TENANT']
@@ -38,6 +38,7 @@ grant_type = "client_credentials"
 auth_base_url = "https://login.microsoftonline.com/"
 oauth_url_v1 = auth_base_url + tenant + str("/oauth2/token")
 graph_users_url = "https://graph.microsoft.com/v1.0/users/"
+mediator_base_url = "http://" + mediator_ip + ":" + mediator_port
 mediator_url = "http://" + mediator_ip + ":" + mediator_port + "/api/setstatus"
 mediator_sync_url = "http://" + mediator_ip + ":" + mediator_port + \
                     "/api/setup"
@@ -51,10 +52,12 @@ VMOusers = []
 def sync_schedule():
     global token
 
-    #  ping MEDIATOR
-    resp = os.system("ping -c 1 " + mediator_ip)
+    # check MEDIATOR status
 
-    if resp == 0:  # ip_address ping succeeded
+    resp = mediator_status(mediator_base_url)
+    print(resp)
+
+    if resp == 200:  # mediator server is active
 
         msg = 'Mediator Server REACHABLE.'
         print(msg)
@@ -76,7 +79,7 @@ def sync_schedule():
         # Start Scheduler
         scheduler.start()
 
-    else:  # ip_address ping failed
+    else:  # mediator server is not active
         msg = 'Mediator Server UNREACHABLE.'
         print(msg)
 

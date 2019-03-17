@@ -14,6 +14,15 @@ import requests
 import datetime
 
 
+def mediator_status(base_url):
+    print('Checking MEDIATOR status...')
+
+    resp = requests.get(base_url)
+    response = resp.status_code
+
+    return response
+
+
 def sync_mediator(sync_url):
     print('In Mediator Sync...')
     start = datetime.datetime.now()
