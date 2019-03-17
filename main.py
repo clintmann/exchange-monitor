@@ -47,8 +47,8 @@ app = Flask(__name__)
 VMOusers = []
 
 
-@app.before_first_request
-def sync_schedule():
+@app.route("/")
+def main():
     global token
     #  sync with MEDIATOR
     sync_resp = sync_mediator(mediator_sync_url)
@@ -56,7 +56,8 @@ def sync_schedule():
     print("response", resp)
 
     if resp == 'True':
-        print('Mediator Server sync SUCCESSFUL.')
+        msg = 'Mediator Server sync SUCCESSFUL.'
+        print(msg)
         #  --- SCHEDULER ----
         scheduler = BackgroundScheduler(daemon=True)
 
@@ -76,14 +77,12 @@ def sync_schedule():
         scheduler.start()
 
     else:
-        print('Was unable to sync with Mediator Server')
+        msg = 'Was unable to sync with Mediator Server'
+        print(msg)
 
-
-@app.route("/")
-def main():
     print(str(datetime.now())+": Processing /monitor functionality")
     # return jsonify({"result": "True"}), 200
-    return "EXCHANGE OOO MAIN PAGE"
+    return "EXCHANGE OOO MAIN PAGE: {0} ", msg
 
 
 @app.route("/monitor", methods=['POST'])
