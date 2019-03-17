@@ -31,8 +31,6 @@ client_id = os.environ['CLIENT_ID']
 client_secret = os.environ['CLIENT_SECRET']
 mediator_ip = os.environ['MEDIATOR_IP']
 mediator_port = os.environ['MEDIATOR_PORT']
-# listener_ip = os.environ['LISTENER_IP']
-# listener_port = os.environ['LISTENER_PORT']
 
 resource = "https://graph.microsoft.com"
 grant_type = "client_credentials"
@@ -43,17 +41,75 @@ graph_users_url = "https://graph.microsoft.com/v1.0/users/"
 mediator_url = "http://" + mediator_ip + ":" + mediator_port + "/api/setstatus"
 mediator_sync_url = "http://" + mediator_ip + ":" + mediator_port + \
                     "/api/setup"
-# listener_url = "http://" + listener_ip + "/users"
-# listener_mon_url = "http://" + listener_ip + "/monitor"
-
 
 app = Flask(__name__)
 
 VMOusers = []
 
 
+@app.before_first_request
+def sync_schedule():
+    global token
+    #  sync with MEDIATOR
+    sync_resp = sync_mediator(mediator_sync_url)
+    resp = sync_resp['result']
+    print("response", resp)
+
+    if resp == 'True':
+        print('Mediator Server sync SUCCESSFUL.')
+        #  --- SCHEDULER ----
+        scheduler = BackgroundScheduler(daemon=True)
+
+        # Schedule Authentication Token Refresh - expires every 3600 seconds
+        scheduler.add_job(auth_token, 'interval', seconds=3500,
+                          args=[client_id, client_secret, resource,
+                                grant_type, oauth_url_v1])
+
+        token = auth_token(client_id, client_secret, resource, grant_type,
+                           oauth_url_v1)
+
+        # Schedule User Status Check
+        scheduler.add_job(process_users, 'interval', seconds=1)
+        process_users()
+
+        # Start Scheduler
+        scheduler.start()
+
+    else:
+        print('Was unable to sync with Mediator Server')
+
+
 @app.route("/")
 def main():
+    global token
+    #  sync with MEDIATOR
+    sync_resp = sync_mediator(mediator_sync_url)
+    resp = sync_resp['result']
+    print("response", resp)
+
+    if resp == 'True':
+        print('Mediator Server sync SUCCESSFUL.')
+        #  --- SCHEDULER ----
+        scheduler = BackgroundScheduler(daemon=True)
+
+        # Schedule Authentication Token Refresh - expires every 3600 seconds
+        scheduler.add_job(auth_token, 'interval', seconds=3500,
+                          args=[client_id, client_secret, resource,
+                                grant_type, oauth_url_v1])
+
+        token = auth_token(client_id, client_secret, resource,
+                           grant_type, oauth_url_v1)
+
+        # Schedule User Status Check
+        scheduler.add_job(process_users, 'interval', seconds=1)
+        process_users(token)
+
+        # Start Scheduler
+        scheduler.start()
+
+    else:
+        print('Was unable to sync with Mediator Server')
+
     print(str(datetime.now())+": Processing /monitor functionality")
     # return jsonify({"result": "True"}), 200
     return "EXCHANGE OOO MAIN PAGE"
@@ -148,7 +204,7 @@ def monitor_users():
 
                 else:  # NO USERS from MEDIATOR GET REQUEST - CHECK local list
                     print('NO users to monitor from MEDIATOR')
-                    return '''<h1>User {} not found in Active Directory</h1>'''\
+                    return '''<h1>User {} not in Active Directory</h1>'''\
                         .format(email_address)
 
         except(KeyError, TypeError, ValueError):
@@ -211,34 +267,6 @@ def process_users():
             else:  # there are no users in list
                 print('NO USER FOUND IN VMO USERS')
 
-
-#  sync with MEDIATOR
-sync_resp = sync_mediator(mediator_sync_url)
-resp = sync_resp['result']
-print("response", resp)
-
-if resp == 'True':
-    print('Mediator Server sync SUCCESSFUL.')
-    #  --- SCHEDULER ----
-    scheduler = BackgroundScheduler(daemon=True)
-
-    # Schedule Authentication Token Refresh - expires every 3600 seconds
-    scheduler.add_job(auth_token, 'interval', seconds=3500,
-                      args=[client_id, client_secret, resource,
-                            grant_type, oauth_url_v1])
-
-    token = auth_token(client_id, client_secret, resource,
-                       grant_type, oauth_url_v1)
-
-    # Schedule User Status Check
-    scheduler.add_job(process_users, 'interval', seconds=1)
-    process_users()
-
-    # Start Scheduler
-    scheduler.start()
-
-else:
-    print('Was unable to sync with Mediator Server')
 
 if __name__ == '__main__':
 
