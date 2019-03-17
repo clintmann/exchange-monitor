@@ -79,7 +79,6 @@ def sync_schedule():
     else:  # ip_address ping failed
         msg = 'Mediator Server UNREACHABLE.'
         print(msg)
-    return token
 
 
 @app.route("/")
