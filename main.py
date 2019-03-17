@@ -62,7 +62,7 @@ def main():
     else:
         result = 'Unable to sync with Mediator Server.'
 
-    message = "EXCHANGE OOO MAIN PAGE : {0}", result
+    message = "EXCHANGE OOO MAIN PAGE : {}".format(result)
     print(message)
 
     return message
