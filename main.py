@@ -79,6 +79,7 @@ def sync_schedule():
     else:  # ip_address ping failed
         msg = 'Mediator Server UNREACHABLE.'
         print(msg)
+    return token
 
 
 @app.route("/")
@@ -114,7 +115,7 @@ def monitor_users():
         req_data = request.get_json(force=True, silent=True)
 
         data = int(len(req_data))
-        print(data)
+        # print(data)
 
         try:
             # 2 - check if there was anything POSTED from MEDIATOR
