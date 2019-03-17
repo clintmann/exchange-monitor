@@ -49,40 +49,23 @@ VMOusers = []
 
 @app.route("/")
 def main():
-    global token
-    #  sync with MEDIATOR
-    sync_resp = sync_mediator(mediator_sync_url)
-    resp = sync_resp['result']
-    print("response", resp)
-
-    if resp == 'True':
-        msg = 'Mediator Server sync SUCCESSFUL.'
-        print(msg)
-        #  --- SCHEDULER ----
-        scheduler = BackgroundScheduler(daemon=True)
-
-        # Schedule Authentication Token Refresh - expires every 3600 seconds
-        scheduler.add_job(auth_token, 'interval', seconds=3500,
-                          args=[client_id, client_secret, resource,
-                                grant_type, oauth_url_v1])
-
-        token = auth_token(client_id, client_secret, resource, grant_type,
-                           oauth_url_v1)
-
-        # Schedule User Status Check
-        scheduler.add_job(process_users, 'interval', seconds=1)
-        process_users()
-
-        # Start Scheduler
-        scheduler.start()
-
-    else:
-        msg = 'Was unable to sync with Mediator Server'
-        print(msg)
-
     print(str(datetime.now())+": Processing /monitor functionality")
     # return jsonify({"result": "True"}), 200
-    return "EXCHANGE OOO MAIN PAGE: {0} ", msg
+
+    #  sync with MEDIATOR
+    sync_resp = sync_mediator(mediator_sync_url)
+    response = sync_resp['result']
+    print("response", response)
+
+    if response == 'True':
+        result = 'Mediator Server sync SUCCESSFUL.'
+    else:
+        result = 'Unable to sync with Mediator Server.'
+
+    message = "EXCHANGE OOO MAIN PAGE : {0}", result
+    print(message)
+
+    return message
 
 
 @app.route("/monitor", methods=['POST'])
@@ -236,6 +219,35 @@ def process_users():
                         print('VMO USERS', VMOusers)
             else:  # there are no users in list
                 print('NO USER FOUND IN VMO USERS')
+
+
+#  ping MEDIATOR
+resp = os.system("ping -c 1 " + mediator_ip)
+
+if resp == 0:  # ip_address ping succeeded
+    msg = 'Mediator Server REACHABLE.'
+    print(msg)
+    #  --- SCHEDULER ----
+    scheduler = BackgroundScheduler(daemon=True)
+
+    # Schedule Authentication Token Refresh - expires every 3600 seconds
+    scheduler.add_job(auth_token, 'interval', seconds=3500,
+                      args=[client_id, client_secret, resource, grant_type,
+                            oauth_url_v1])
+
+    token = auth_token(client_id, client_secret, resource, grant_type,
+                       oauth_url_v1)
+
+    # Schedule User Status Check
+    scheduler.add_job(process_users, 'interval', seconds=1)
+    process_users()
+
+    # Start Scheduler
+    scheduler.start()
+
+else:  # ip_address ping failed
+    msg = 'Mediator Server UNREACHABLE.'
+    print(msg)
 
 
 if __name__ == '__main__':
