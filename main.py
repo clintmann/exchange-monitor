@@ -81,35 +81,6 @@ def sync_schedule():
 
 @app.route("/")
 def main():
-    global token
-    #  sync with MEDIATOR
-    sync_resp = sync_mediator(mediator_sync_url)
-    resp = sync_resp['result']
-    print("response", resp)
-
-    if resp == 'True':
-        print('Mediator Server sync SUCCESSFUL.')
-        #  --- SCHEDULER ----
-        scheduler = BackgroundScheduler(daemon=True)
-
-        # Schedule Authentication Token Refresh - expires every 3600 seconds
-        scheduler.add_job(auth_token, 'interval', seconds=3500,
-                          args=[client_id, client_secret, resource,
-                                grant_type, oauth_url_v1])
-
-        token = auth_token(client_id, client_secret, resource,
-                           grant_type, oauth_url_v1)
-
-        # Schedule User Status Check
-        scheduler.add_job(process_users, 'interval', seconds=1)
-        process_users(token)
-
-        # Start Scheduler
-        scheduler.start()
-
-    else:
-        print('Was unable to sync with Mediator Server')
-
     print(str(datetime.now())+": Processing /monitor functionality")
     # return jsonify({"result": "True"}), 200
     return "EXCHANGE OOO MAIN PAGE"
