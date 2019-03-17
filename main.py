@@ -45,6 +45,7 @@ mediator_sync_url = "http://" + mediator_ip + ":" + mediator_port + \
 app = Flask(__name__)
 
 VMOusers = []
+global token
 
 
 @app.route("/")
@@ -225,6 +226,7 @@ def process_users():
 resp = os.system("ping -c 1 " + mediator_ip)
 
 if resp == 0:  # ip_address ping succeeded
+
     msg = 'Mediator Server REACHABLE.'
     print(msg)
     #  --- SCHEDULER ----
