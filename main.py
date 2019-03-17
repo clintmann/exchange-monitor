@@ -45,7 +45,40 @@ mediator_sync_url = "http://" + mediator_ip + ":" + mediator_port + \
 app = Flask(__name__)
 
 VMOusers = []
-global token
+
+
+@app.before_first_request
+def sync_schedule():
+    global token
+
+    #  ping MEDIATOR
+    resp = os.system("ping -c 1 " + mediator_ip)
+
+    if resp == 0:  # ip_address ping succeeded
+
+        msg = 'Mediator Server REACHABLE.'
+        print(msg)
+        #  --- SCHEDULER ----
+        scheduler = BackgroundScheduler(daemon=True)
+
+        # Schedule Authentication Token Refresh - expires every 3600 seconds
+        scheduler.add_job(auth_token, 'interval', seconds=3500,
+                          args=[client_id, client_secret, resource, grant_type,
+                                oauth_url_v1])
+
+        token = auth_token(client_id, client_secret, resource, grant_type,
+                           oauth_url_v1)
+
+        # Schedule User Status Check
+        scheduler.add_job(process_users, 'interval', seconds=1)
+        process_users()
+
+        # Start Scheduler
+        scheduler.start()
+
+    else:  # ip_address ping failed
+        msg = 'Mediator Server UNREACHABLE.'
+        print(msg)
 
 
 @app.route("/")
@@ -220,36 +253,6 @@ def process_users():
                         print('VMO USERS', VMOusers)
             else:  # there are no users in list
                 print('NO USER FOUND IN VMO USERS')
-
-
-#  ping MEDIATOR
-resp = os.system("ping -c 1 " + mediator_ip)
-
-if resp == 0:  # ip_address ping succeeded
-
-    msg = 'Mediator Server REACHABLE.'
-    print(msg)
-    #  --- SCHEDULER ----
-    scheduler = BackgroundScheduler(daemon=True)
-
-    # Schedule Authentication Token Refresh - expires every 3600 seconds
-    scheduler.add_job(auth_token, 'interval', seconds=3500,
-                      args=[client_id, client_secret, resource, grant_type,
-                            oauth_url_v1])
-
-    token = auth_token(client_id, client_secret, resource, grant_type,
-                       oauth_url_v1)
-
-    # Schedule User Status Check
-    scheduler.add_job(process_users, 'interval', seconds=1)
-    process_users()
-
-    # Start Scheduler
-    scheduler.start()
-
-else:  # ip_address ping failed
-    msg = 'Mediator Server UNREACHABLE.'
-    print(msg)
 
 
 if __name__ == '__main__':
