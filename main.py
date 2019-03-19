@@ -235,12 +235,16 @@ def process_users():
                         u['ooo'] = ooo_status
                         u['message'] = ""
 
+                        if ooo_status != "disabled":  # autoReply (OoO) enabled
+                            ooo_profile_status = "True"  # normalize status
+                        else:
+                            ooo_profile_status = "False"
                         # normalize OoO status for MEDIATOR
-                        ooo_profile_status = "False"  # normalize status
+                        # ooo_profile_status = "False"  # normalize status
 
                         profile_payload = {
                             "email": email_address,
-                            "status": ooo_status,
+                            "status": ooo_profile_status,
                             "message": message
                         }
 
