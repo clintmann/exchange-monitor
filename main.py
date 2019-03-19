@@ -250,7 +250,7 @@ def process_users():
                         # 6 - POST ooo status change to MEDIATOR
                         print('POST OoO Status to Mediator '
                               'Server...')
-                        post_mediator(mediator_url, profile_payload)
+                        post_mediator(mediator_url, profile_json)
                         print('POST complete from vmo enabled '
                               'list...')
                         print('VMO USERS', VMOusers)
