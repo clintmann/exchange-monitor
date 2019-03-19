@@ -11,7 +11,7 @@ This is the Post API microservice, it will
 """
 
 import requests
-
+import json
 
 def post_mediator(mediator_url, status_payload):
     print('Status payload', status_payload)
@@ -23,7 +23,7 @@ def post_mediator(mediator_url, status_payload):
         'Content-Type': 'application/json'
     }
 
-    response = requests.post(mediator_url, data=status_payload,
+    response = requests.post(mediator_url, data=json.dumps(status_payload),
                              headers=headers)
 
     # print('Mediator POST', response.text)
