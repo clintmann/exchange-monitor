@@ -12,6 +12,7 @@ This is the Post API microservice, it will
 
 import requests
 
+
 def post_mediator(mediator_url, status_payload):
     print('Status payload', status_payload)
     print(type(status_payload))
