@@ -240,7 +240,7 @@ def process_users():
 
                         profile_payload = {
                             "email": email_address,
-                            "status": ooo_profile_status,
+                            "status": ooo_status,
                             "message": message
                         }
 
