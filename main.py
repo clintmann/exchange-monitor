@@ -239,9 +239,9 @@ def process_users():
                         ooo_profile_status = "False"  # normalize status
 
                         profile_payload = {
-                            "email": email_address,
-                            "status": ooo_profile_status,
-                            "message": message
+                           "email": email_address,
+                           "status": ooo_profile_status,
+                           "message": message
                         }
 
                         profile_json = json.dumps(profile_payload)
