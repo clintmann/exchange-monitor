@@ -75,7 +75,7 @@ def sync_schedule():
                            oauth_url_v1)
 
         # Schedule User Status Check
-        scheduler.add_job(process_users, 'interval', seconds=1)
+        scheduler.add_job(process_users, 'interval', seconds=5)
         process_users()
 
         # Start Scheduler
