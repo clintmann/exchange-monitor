@@ -208,7 +208,7 @@ def process_users():
 
                 # 2 - parse through list checking ooo status
                 for u in VMOusers:
-                    # print(u)
+                    print('user - for', u)
                     last_ooo_status = u['ooo']
                     email_address = u['email']
                     # monitor_status = u['monitor']
@@ -220,12 +220,14 @@ def process_users():
 
                     # 4 - compare last ooo status to current ooo status
                     if last_ooo_status == ooo_status:
+                        print('user', u)
                         print('last ooo', last_ooo_status)
                         print('ooo status', ooo_status)
                         print('no change in OOO status')
                     else:
 
                         # 5 - change detected generate payload for MEDIATOR
+                        print('user', u)
                         print('last ooo', last_ooo_status)
                         print('ooo status', ooo_status)
                         print('OOO status has changed...')
@@ -248,7 +250,7 @@ def process_users():
                             "message": message
                         }
 
-                        profile_json = json.dumps(profile_payload)
+                        # profile_json = json.dumps(profile_payload)
 
                         # print('profile json', profile_json)
                         # 6 - POST ooo status change to MEDIATOR
