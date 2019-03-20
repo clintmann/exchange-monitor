@@ -146,14 +146,14 @@ def monitor_users():
 
                         # 7 - if OoO is enabled - POST to MEDIATOR
                         if ooo_status != "disabled":  # autoReply (OoO) enabled
-                            ooo_status = "True"  # normalize status
+                            ooo_profile_status = "True"  # normalize status
 
                             # 8 - add this user to local storage
                             # add ooo_status to vmo_enabled_usrs
 
                             profile = {
                                 "email": email_address,
-                                "ooo": ooo_status,
+                                "ooo": ooo_profile_status,
                                 "message": message
                             }
 
@@ -253,10 +253,10 @@ def process_users():
                         print('profile json', profile_json)
                         # 6 - POST ooo status change to MEDIATOR
                         print('POST OoO Status to Mediator '
-                              'Server...')
+                              'Server...(process_users)')
                         post_mediator(mediator_url, profile_payload)
                         print('POST complete from vmo enabled '
-                              'list...')
+                              'list...(process_users)')
                         print('VMO USERS', VMOusers)
             else:  # there are no users in list
                 print('NO USER FOUND IN VMO USERS')

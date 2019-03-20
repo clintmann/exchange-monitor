@@ -28,7 +28,7 @@ def post_mediator(mediator_url, status_payload):
 
     # print('Mediator POST', response.text)
     data = response.json()
-    print(response.text)
+    # print(response.text)
     print('POST REQUEST - Mediator data to send', status_payload)
     print('POST REQUEST - Mediator response', str(data))
 
