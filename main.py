@@ -204,6 +204,7 @@ def monitor_users():
 def process_users():
     # 1 - check if there are users in vmo_enabled_users list
             if len(VMOusers) != 0:  # there are users in list
+                print('length vmo users',len(VMOusers))
                 print('USER FOUND IN VMO USERS')
 
                 # 2 - parse through list checking ooo status
