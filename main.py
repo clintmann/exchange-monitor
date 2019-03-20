@@ -45,8 +45,6 @@ mediator_sync_url = "http://" + mediator_ip + ":" + mediator_port + \
 
 app = Flask(__name__)
 
-VMOusers = []
-
 
 @app.before_first_request
 def sync_schedule():
@@ -61,6 +59,10 @@ def sync_schedule():
 
         msg = 'Mediator Server REACHABLE.'
         print(msg)
+
+        VMOusers = []
+        global VMOusers
+
         #  --- SCHEDULER ----
         scheduler = BackgroundScheduler(daemon=True)
 
