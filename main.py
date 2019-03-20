@@ -75,7 +75,7 @@ def sync_schedule():
                            oauth_url_v1)
 
         # Schedule User Status Check
-        scheduler.add_job(process_users, 'interval', seconds=5)
+        scheduler.add_job(process_users, 'interval', seconds=1)
         process_users()
 
         # Start Scheduler
@@ -189,7 +189,11 @@ def monitor_users():
                               .format(email_address))
 
                         if email_address in VMOusers:  # usr not in list
+                            print('Checking VMOusers...', VMOusers)
+
                             del VMOusers[email_address]
+
+                            print('Deleted user...', VMOusers)
 
                     return '''<h1>You would like to monitor user {} {}</h1>'''\
                         .format(email_address, monitor_status)
