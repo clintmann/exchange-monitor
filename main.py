@@ -187,7 +187,7 @@ def monitor_users():
                         # monitor is FALSE delete user from VMOusers
                         print("This User {0} is not in the monitor state"
                               .format(email_address))
-
+                        print('VMOusers', VMOusers)
                         if email_address in VMOusers:  # usr not in list
                             print('Checking VMOusers...', VMOusers)
 
