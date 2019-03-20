@@ -15,7 +15,7 @@ import requests
 
 def post_mediator(mediator_url, status_payload):
     print('Status payload', status_payload)
-    print(type(status_payload))
+    # print(type(status_payload))
 
     # payload = status_payload
 

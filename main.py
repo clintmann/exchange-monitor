@@ -73,7 +73,7 @@ def sync_schedule():
                            oauth_url_v1)
 
         # Schedule User Status Check
-        scheduler.add_job(process_users, 'interval', seconds=1)
+        scheduler.add_job(process_users, 'interval', seconds=5)
         process_users()
 
         # Start Scheduler
@@ -250,7 +250,7 @@ def process_users():
 
                         profile_json = json.dumps(profile_payload)
 
-                        print('profile json', profile_json)
+                        # print('profile json', profile_json)
                         # 6 - POST ooo status change to MEDIATOR
                         print('POST OoO Status to Mediator '
                               'Server...(process_users)')
