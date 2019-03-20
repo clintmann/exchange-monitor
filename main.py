@@ -45,12 +45,14 @@ mediator_sync_url = "http://" + mediator_ip + ":" + mediator_port + \
 
 app = Flask(__name__)
 
-VMOusers = []
+# VMOusers = []
 
 
 @app.before_first_request
 def sync_schedule():
     global token
+    global VMOusers
+    VMOusers = []
 
     # check MEDIATOR status
 
