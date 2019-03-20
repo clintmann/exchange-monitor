@@ -262,7 +262,7 @@ def process_users():
                               'list...(process_users)')
                         print('VMO USERS', VMOusers)
             else:  # there are no users in list
-                print('NO USER FOUND IN VMO USERS')
+                print('NO USER FOUND IN VMO USERS', len(VMOusers))
 
 
 if __name__ == '__main__':
