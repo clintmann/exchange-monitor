@@ -16,7 +16,6 @@ a POST will be made to the Mediator application.
 
 """
 
-import json
 import os
 from apscheduler.schedulers.background import BackgroundScheduler
 from flask import Flask, request, jsonify
@@ -44,8 +43,6 @@ mediator_sync_url = "http://" + mediator_ip + ":" + mediator_port + \
                     "/api/setup"
 
 app = Flask(__name__)
-
-# VMOusers = []
 
 
 @app.before_first_request
@@ -75,7 +72,7 @@ def sync_schedule():
                            oauth_url_v1)
 
         # Schedule User Status Check
-        scheduler.add_job(process_users, 'interval', seconds=5)
+        scheduler.add_job(process_users, 'interval', seconds=2)
         process_users()
 
         # Start Scheduler
@@ -88,7 +85,7 @@ def sync_schedule():
 
 @app.route("/")
 def main():
-    print(str(datetime.now())+": Processing /monitor functionality")
+    print(str(datetime.now())+": Processing /main functionality")
     # return jsonify({"result": "True"}), 200
 
     #  sync with MEDIATOR
@@ -126,7 +123,8 @@ def monitor_users():
             if data > 0:  # MEDIATOR posted users to be monitored
                 email_address = req_data['email']
                 monitor_status = req_data['status']
-
+                print('Monitor status', monitor_status)
+                print('VMOusers - start', VMOusers)
                 # 3 - there is a user - query MS Active Directory
                 print('CHECK ACTIVE DIRECTORY FOR EMAIL: ', email_address)
                 activedir_check = check_activedir_user(token, graph_users_url)
@@ -148,27 +146,33 @@ def monitor_users():
 
                         # 7 - if OoO is enabled - POST to MEDIATOR
                         if ooo_status != "disabled":  # autoReply (OoO) enabled
-                            ooo_profile_status = "True"  # normalize status
+                            ooo_status = "True"  # normalize status
 
                             # 8 - add this user to local storage
                             # add ooo_status to vmo_enabled_usrs
 
                             profile = {
                                 "email": email_address,
-                                "ooo": ooo_profile_status,
+                                "ooo": ooo_status,
                                 "message": message
                             }
 
-                            profile_json = json.dumps(profile)
+                            profile_payload = {
+                                "email": email_address,
+                                "status": ooo_status,
+                                "message": message
+                            }
+                            # profile_json = json.dumps(profile)
 
                             if email_address not in VMOusers:  # not in list
                                 VMOusers.append(profile)  # add user
 
                                 print('POST OoO Status to Mediator Server...')
-                                post_mediator(mediator_url, profile_json)
+                                post_mediator(mediator_url, profile_payload)
                                 print('POST complete...')
 
                         else:  # OoO autoReply is disabled
+                            ooo_status = "False"
                             print("User {0} : does not have active Out of "
                                   "Office alert".format(email_address))
                             # 9 - add this user to local storage
@@ -188,12 +192,11 @@ def monitor_users():
                         print("This User {0} is not in the monitor state"
                               .format(email_address))
                         print('VMOusers', VMOusers)
-                        if email_address in VMOusers:  # usr not in list
-                            print('Checking VMOusers...', VMOusers)
 
-                            del VMOusers[email_address]
-
-                            print('Deleted user...', VMOusers)
+                        for u in range(len(VMOusers)):
+                            if VMOusers[u]['email'] == email_address:
+                                del VMOusers[u]
+                                print('Deleted user...')
 
                     return '''<h1>You would like to monitor user {} {}</h1>'''\
                         .format(email_address, monitor_status)
@@ -210,7 +213,7 @@ def monitor_users():
 def process_users():
     # 1 - check if there are users in vmo_enabled_users list
             if len(VMOusers) != 0:  # there are users in list
-                print('length vmo users',len(VMOusers))
+                print('length vmo users', len(VMOusers))
                 print('USER FOUND IN VMO USERS')
 
                 # 2 - parse through list checking ooo status
