@@ -43,13 +43,14 @@ mediator_sync_url = "http://" + mediator_ip + ":" + mediator_port + \
                     "/api/setup"
 
 app = Flask(__name__)
+VMOusers = []
 
 
 @app.before_first_request
 def sync_schedule():
     global token
-    global VMOusers
-    VMOusers = []
+    # global VMOusers
+    # VMOusers = []
 
     # check MEDIATOR status
 
@@ -197,7 +198,7 @@ def monitor_users():
                             if VMOusers[u]['email'] == email_address:
                                 del VMOusers[u]
                                 print('Deleted user...')
-
+                                break
                     return '''<h1>You would like to monitor user {} {}</h1>'''\
                         .format(email_address, monitor_status)
 
@@ -212,7 +213,7 @@ def monitor_users():
 
 def process_users():
     # 1 - check if there are users in vmo_enabled_users list
-            if len(VMOusers) != 0:  # there are users in list
+            if len(VMOusers) > 0:  # there are users in list
                 print('length vmo users', len(VMOusers))
                 print('USER FOUND IN VMO USERS')
 
