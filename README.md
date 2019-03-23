@@ -14,7 +14,8 @@ Office 365 Outlook/Exchange mailbox(es)
 The first thing we must do, is register our application, so that it can interact with 
 our Azure Active Directory Tenant.
 
-![App Registration][logo1]
+## Application Registration
+![APP REGISTRATION][logo1]
 [logo1]: https://github.com/clintmann/exchange-monitor/blob/master/images/App_registration.gif "App Registration"
 
 - **Register Application:** 
