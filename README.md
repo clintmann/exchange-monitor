@@ -14,10 +14,10 @@ Office 365 Outlook/Exchange mailbox(es)
 The first thing we must do, is register our application, so that it can interact with 
 our Azure Active Directory Tenant.
 
-[logo1]: https://github.com/clintmann/exchange-monitor/blob/master/images/App_registration.gif "Registration Image"
+![App Registration][logo1]
+[logo1]: https://github.com/clintmann/exchange-monitor/blob/master/images/App_registration.gif "App Registration"
 
 - **Register Application:** 
 
 ## How it works
 
-The python script is started when the user enters global configuration mode. We will use an Embedded Event Manager (EEM) applet as the trigger. When the user exists out of global configuration mode a separate EEM script is used to terminate the python script process.
