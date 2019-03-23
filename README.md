@@ -16,6 +16,7 @@ our Azure Active Directory Tenant.
 
 ## Application Registration
 ![APP REGISTRATION][logo1]
+
 [logo1]: https://github.com/clintmann/exchange-monitor/blob/master/images/App_registration.gif "App Registration"
 
 - **Register Application:** 
