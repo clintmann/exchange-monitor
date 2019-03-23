@@ -14,7 +14,7 @@ import requests
 import re
 
 
-def check_activedir_user(tkn, graph_base_url):
+def check_activedir_users(tkn, graph_base_url):
 
     headers = {
         'Authorization': "Bearer " + str(tkn),
