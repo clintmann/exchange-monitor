@@ -24,6 +24,6 @@ In your Azure portal
 Choose **Azure Active Directory > App registrations > New application registration**
 
 
-For more information take a look at this [tutorial][https://docs.microsoft.com/en-us/azure/active-directory-b2c/tutorial-register-applications#register-a-web-app]
+For more information take a look at this [tutorial](https://docs.microsoft.com/en-us/azure/active-directory-b2c/tutorial-register-applications#register-a-web-app)
 ## How it works
 
