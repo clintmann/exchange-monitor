@@ -11,8 +11,12 @@ Office 365 Outlook/Exchange mailbox(es)
 
 **Note:** This application will leverage the Microsoft Graph APIs.
 ## Getting Started
-The first thing we must do, is register our application, so that it can interact with 
-our Azure Active Directory Tenant.
+In order to interact with Microsoft Graph your application must have an access token. 
+To get an access token, the application must be able to successfully authenticate to the 
+Azure Active Directory.  
+
+So the first thing we must do, is register our application, so that it can authenticate and 
+receive a token from our Azure Active Directory Tenant.
 
 ## Application Registration
 
@@ -42,7 +46,12 @@ Give your Key a Description and Expiration time and click Save Click Save to Gen
 
 [logo4]: https://github.com/clintmann/exchange-monitor/blob/master/images/Keys.gif "Key"
  
-
 For more information take a look at this [tutorial](https://docs.microsoft.com/en-us/azure/active-directory-b2c/tutorial-register-applications#register-a-web-app)
+
+![REQUIRED PERMISSIONS][logo5]
+
+[logo5]: https://github.com/clintmann/exchange-monitor/blob/master/images/Required_permissions.gif "Required Permissions"
+ 
+
 ## How it works
 
