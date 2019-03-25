@@ -23,7 +23,21 @@ In your Azure portal
 
 Choose **Azure Active Directory > App registrations > New application registration**
 
+![CREATE APP][logo2]
 
+[logo2]: https://github.com/clintmann/exchange-monitor/blob/master/images/Create_app.gif "Create App"
+ 
+
+![GENERATE KEY][logo3]
+
+[logo3]: https://github.com/clintmann/exchange-monitor/blob/master/images/Settings_generate_key.gif "Generate Key"
+ 
+![KEYS][logo4]
+
+[logo4]: https://github.com/clintmann/exchange-monitor/blob/master/images/Keys.gif "Key"
+ 
+Click Save to Generate the key
+ 
 For more information take a look at this [tutorial](https://docs.microsoft.com/en-us/azure/active-directory-b2c/tutorial-register-applications#register-a-web-app)
 ## How it works
 
