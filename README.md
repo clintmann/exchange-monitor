@@ -15,29 +15,34 @@ The first thing we must do, is register our application, so that it can interact
 our Azure Active Directory Tenant.
 
 ## Application Registration
-![APP REGISTRATION][logo1]
 
-[logo1]: https://github.com/clintmann/exchange-monitor/blob/master/images/App_registration.gif "App Registration"
- 
 In your Azure portal
 
 Choose **Azure Active Directory > App registrations > New application registration**
 
+![APP REGISTRATION][logo1]
+
+[logo1]: https://github.com/clintmann/exchange-monitor/blob/master/images/App_registration.gif "App Registration"
+ 
+Give your application a name, Sign-on  URL and click Create
 ![CREATE APP][logo2]
 
 [logo2]: https://github.com/clintmann/exchange-monitor/blob/master/images/Create_app.gif "Create App"
  
+Next you will need to generate a key for you application to use. 
+Click **Settings > Keys**
 
 ![GENERATE KEY][logo3]
 
 [logo3]: https://github.com/clintmann/exchange-monitor/blob/master/images/Settings_generate_key.gif "Generate Key"
- 
+
+Give your Key a Description and Expiration time and click Save Click Save to Generate the key
+
 ![KEYS][logo4]
 
 [logo4]: https://github.com/clintmann/exchange-monitor/blob/master/images/Keys.gif "Key"
  
-Click Save to Generate the key
- 
+
 For more information take a look at this [tutorial](https://docs.microsoft.com/en-us/azure/active-directory-b2c/tutorial-register-applications#register-a-web-app)
 ## How it works
 
