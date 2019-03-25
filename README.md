@@ -48,9 +48,9 @@ Give your Key a Description and Expiration time and click Save Click Save to Gen
  
 For more information take a look at this [tutorial](https://docs.microsoft.com/en-us/azure/active-directory-b2c/tutorial-register-applications#register-a-web-app)
 
-![REQUIRED PERMISSIONS][logo5]
+![REQUIRED PERMISSION][logo5]
 
-[logo5]: https://github.com/clintmann/exchange-monitor/blob/master/images/Required_permissions.gif "Required Permissions"
+[logo5]: https://github.com/clintmann/exchange-monitor/blob/master/images/Required_permission.gif "Required Permission"
  
 
 ## How it works
