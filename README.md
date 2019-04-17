@@ -25,6 +25,8 @@ In your Azure portal
 
 Choose **Azure Active Directory > App registrations > New application registration**
 
+<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/App_registration.gif" width="200" height="200" />
+
 ![APP REGISTRATION][logo1]
 
 [logo1]: (https://github.com/clintmann/exchange-monitor/blob/master/images/App_registration.gif =100x)"App Registration"
