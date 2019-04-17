@@ -27,7 +27,7 @@ Choose **Azure Active Directory > App registrations > New application registrati
 
 ![APP REGISTRATION][logo1]
 
-[logo1]: https://github.com/clintmann/exchange-monitor/blob/master/images/App_registration.gif "App Registration"
+[logo1]: (https://github.com/clintmann/exchange-monitor/blob/master/images/App_registration.gif =100x20)"App Registration"
  
 Give your application a name, Sign-on  URL and click Create
 ![CREATE APP][logo2]
@@ -57,7 +57,7 @@ Do this by checking the box next to the access you would like to assign.
 
 For this application we are going to enable 1 permission for Azure AD and three permissions for Microsoft Graph.
 
-Windows Azure Active Directory API Permissions
+**Windows Azure Active Directory API Permissions**
 1. Read directory data
 
 
@@ -66,7 +66,7 @@ Windows Azure Active Directory API Permissions
 [logo7]: https://github.com/clintmann/exchange-monitor/blob/master/images/Enable_Access_AzureAD.gif "AD Access"
  
 
-Microsoft Graph API Permissions
+**Microsoft Graph API Permissions**
 1. Read all users' full profiles
 2. Read all user mailbox settings
 3. Read directory data
