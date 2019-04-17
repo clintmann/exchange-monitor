@@ -27,7 +27,7 @@ Choose **Azure Active Directory > App registrations > New application registrati
 
 ![APP REGISTRATION][logo1]
 
-[logo1]: (https://github.com/clintmann/exchange-monitor/blob/master/images/App_registration.gif =100x20)"App Registration"
+[logo1]: (https://github.com/clintmann/exchange-monitor/blob/master/images/App_registration.gif =100x)"App Registration"
  
 Give your application a name, Sign-on  URL and click Create
 ![CREATE APP][logo2]
