@@ -87,7 +87,7 @@ For this application we are going to enable 1 permission for Azure AD and three 
  
 Finally you must click **Grant permissions** in order for your choices to take affect.
 
-<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Grant_permissions.gif" width="500" height="300" />
+<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Grant_permissions.gif" width="600" height="300" />
 
 
 For more information take a look at this [tutorial](https://docs.microsoft.com/en-us/azure/active-directory-b2c/tutorial-register-applications#register-a-web-app)
@@ -115,6 +115,6 @@ Under the **Settings** menu, make sure to add in the Config variables.
 
 Back under the **Deploy** menu scroll down the **Manual Deploy** to deploy the application
 
-<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Heroku_manual_deploy.gif" width="900" height="300" />
+<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Heroku_manual_deploy.gif" width="950" height="300" />
 
 
