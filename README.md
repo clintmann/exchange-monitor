@@ -42,7 +42,7 @@ Click **Settings > Keys**
 
 Give your Key a Description and Expiration time and click Save Click Save to Generate the key
 
-<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Keys.gif" width="400" height="200" />
+<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Keys.gif" width="400" height="300" />
 
  
 Our application with be interacting with Microsoft Graph via REST APIs. We will want to assign the appropriate level of permissions to grant acces only to the APIs we need and nothing more. 
