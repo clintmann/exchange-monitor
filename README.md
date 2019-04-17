@@ -42,7 +42,7 @@ Click **Settings > Keys**
 
 Give your Key a Description and Expiration time and click Save Click Save to Generate the key
 
-<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Keys.gif" width="600" height="300" />
+<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Keys.gif" width="400" height="200" />
 
  
 Our application with be interacting with Microsoft Graph via REST APIs. We will want to assign the appropriate level of permissions to grant acces only to the APIs we need and nothing more. 
@@ -69,7 +69,7 @@ For this application we are going to enable 1 permission for Azure AD and three 
  
 Finally you must click Grant permissions in order for your choices to take affect.
 
-<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Grant_permissions.gif" width="300" height="300" />
+<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Grant_permissions.gif" width="500" height="300" />
 
 
 For more information take a look at this [tutorial](https://docs.microsoft.com/en-us/azure/active-directory-b2c/tutorial-register-applications#register-a-web-app)
