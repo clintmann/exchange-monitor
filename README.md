@@ -42,7 +42,7 @@ Click **Settings > Keys**
 
 Give your Key a Description and Expiration time and click Save Click Save to Generate the key
 
-<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Keys.gif" width="500" height="500" />
+<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Keys.gif" width="500" height="300" />
 
  
 Our application with be interacting with Microsoft Graph via REST APIs. We will want to assign the appropriate level of permissions to grant acces only to the APIs we need and nothing more. 
@@ -56,7 +56,7 @@ For this application we are going to enable 1 permission for Azure AD and three 
 **Windows Azure Active Directory API Permissions**
 1. Read directory data
 
-<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Enable_Access_AzureAD.gif" width="800" height="900" />
+<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Enable_Access_AzureAD.gif" width="800" height="500" />
 
 
 **Microsoft Graph API Permissions**
@@ -64,7 +64,7 @@ For this application we are going to enable 1 permission for Azure AD and three 
 2. Read all user mailbox settings
 3. Read directory data
 
-<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Enable_Access_Graph.gif" width="800" height="500" />
+<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Enable_Access_Graph.gif" width="800" height="900" />
 
  
 Finally you must click Grant permissions in order for your choices to take affect.
