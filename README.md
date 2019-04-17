@@ -99,7 +99,7 @@ This microservice was deployed onto the [Heroku](https://www.heroku.com/) cloud 
 Here is a fantastic [example](https://github.com/datademofun/heroku-basic-flask) of how to deploy a 
 Python Flask application onto Heroku.
 
-### Heroku deplopy via GUI
+### Heroku deploy via GUI
 
 You can also deploy via the Heroku dashboard
 
@@ -107,7 +107,7 @@ Under the **Deploy** menu choose GitHub as your Deployment method. This will lin
 containing the code.
 
 
-<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Heroku_GitHub_deploy.gif" width="800" height="400" />
+<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Heroku_GitHub_deploy.gif" width="600" height="300" />
 
 Under the **Settings** menu, make sure to add in the Config variables. 
 
@@ -115,6 +115,6 @@ Under the **Settings** menu, make sure to add in the Config variables.
 
 Back under the **Deploy** menu scroll down the **Manual Deploy** to deploy the application
 
-<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Heroku_manual_deploy.gif" width="800" height="400" />
+<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Heroku_manual_deploy.gif" width="500" height="400" />
 
 
