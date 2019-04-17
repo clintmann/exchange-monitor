@@ -107,7 +107,7 @@ Under the **Deploy** menu choose GitHub as your Deployment method. This will lin
 containing the code.
 
 
-<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Heroku_GitHub_deploy.gif" width="800" height="400" />
+<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Heroku_GitHub_deploy.gif" width="900" height="400" />
 
 Under the **Settings** menu, make sure to add in the Config variables. 
 
@@ -115,6 +115,6 @@ Under the **Settings** menu, make sure to add in the Config variables.
 
 Back under the **Deploy** menu scroll down the **Manual Deploy** to deploy the application
 
-<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Heroku_manual_deploy.gif" width="800" height="300" />
+<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Heroku_manual_deploy.gif" width="900" height="300" />
 
 
