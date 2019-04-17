@@ -21,6 +21,153 @@ setting. This status along with the text from the users Out of Office message is
 Continuous, real-time interaction with vmo-mediator allows for users to be added and their monitor status 
 to be changed dynamically. 
 
+### API Descriptions
+
+#### Get MS Graph Authorization Token
+
+**DESCRIPTION**
+This API call will be used to get an Authorization Token that your application will use to make requests to 
+Microsoft Graph.
+
+**PATH:** https://login.microsoftonline.com/< your TENANT ID >/oauth2/token
+
+**METHOD:** POST
+
+**PARAMETERS:** 
+```bash
+client_id= < your client id >
+client_secret= < your client secret >
+resource= https://graph.microsoft.com
+grant_type= client_credentials
+
+```
+
+```bash
+headers = {
+        'Content-Type': "application/x-www-form-urlencoded",
+        'cache-control': "no-cache",
+    }
+```
+
+**RETURN:** 
+```bash
+{
+    "token_type": "Bearer",
+    "expires_in": "3600",
+    "ext_expires_in": "3600",
+    "expires_on": "1555530120",
+    "not_before": "1555526220",
+    "resource": "https://graph.microsoft.com",
+    "access_token": " < your super secret token >"
+}
+```
+
+
+#### Get AD Users
+**Description**
+This API call will be used to query Active Directory for users.
+
+**PATH:** https://graph.microsoft.com/v1.0/users
+
+**METHOD:** GET
+
+**PARAMETERS:** 
+```bash
+    headers = {
+        'Authorization': "Bearer " + < your token>
+    }
+```
+
+**RETURN:**
+
+```bash
+{
+    "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#users",
+    "value": [
+        {
+            "businessPhones": [],
+            "displayName": "User Name",
+            "givenName": "User",
+            "jobTitle": null,
+            "mail": "user@domain.com",
+            "mobilePhone": null,
+            "officeLocation": null,
+            "preferredLanguage": "en-US",
+            "surname": "Mann",
+            "userPrincipalName": "user@domain.com",
+            "id": "< user id >"
+        }
+}
+```
+
+
+#### Get Mailbox Automatic Reply Setting
+**Description**
+This API call will be used to get the mailbox Automatic Reply Setting for a particular user.
+
+**PATH:** https://graph.microsoft.com/v1.0/users/user@domain.com/mailboxSettings/automaticRepliesSetting
+
+**METHOD:** GET
+
+**PARAMETERS:** 
+```bash
+    headers = {
+        'Authorization': "Bearer " + < your token >
+    }
+```
+
+**RETURN:**
+```bash
+{
+    "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#users('user%40domain.com')/mailboxSettings/automaticRepliesSetting",
+    "status": "scheduled",
+    "externalAudience": "none",
+    "internalReplyMessage": "<html>\n<body>\n<div>Hello I am so glad my vacation is here, I may never return. </div>\n</body>\n</html>\n",
+    "externalReplyMessage": "<html>\n<body>\n<div>Hello I am so glad my vacation is here, I may never return. </div>\n</body>\n</html>\n",
+    "scheduledStartDateTime": {
+        "dateTime": "2019-04-17T16:00:00.0000000",
+        "timeZone": "UTC"
+    },
+    "scheduledEndDateTime": {
+        "dateTime": "2019-04-18T16:00:00.0000000",
+        "timeZone": "UTC"
+    }
+}
+```
+
+
+#### Mediator Sync API
+**Description:** 
+This API call is used to syncronize with the vmo-mediator microservice. 
+**/api/**
+
+**METHOD:** GET
+
+**PARAMETERS:** None
+
+**RETURN:** 200 OK
+
+
+
+#### Mediator Monitor API
+**Description:** 
+This API call is used by the vmo-mediator to POST a monitor request. 
+
+**/api/monitor**
+
+**METHOD:** POST
+
+**PARAMETERS:**
+```bash
+{
+    "email" : "user@domain.com",
+    "status" : "True"
+}	
+```
+**RETURN:**
+```bash
+<h1>You would like to monitor user@domain.com True</h1>
+```
 
 ## Requirements
 * Azure Active Directory
@@ -97,7 +244,7 @@ For more information take a look at this [tutorial](https://docs.microsoft.com/e
 This microservice was deployed onto the [Heroku](https://www.heroku.com/) cloud platform. 
 
 Here is a fantastic [example](https://github.com/datademofun/heroku-basic-flask) of how to deploy a 
-Python Flask application onto Heroku.
+Python Flask application onto Heroku via ther Heroku toolbelt.
 
 ### Heroku deploy via GUI
 
