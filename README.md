@@ -25,7 +25,7 @@ In your Azure portal
 
 Choose **Azure Active Directory > App registrations > New application registration**
 
-<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/App_registration.gif" width="500" height="300" />
+<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/App_registration.gif" width="800" height="500" />
 
 ![APP REGISTRATION][logo1]
 
@@ -34,7 +34,7 @@ Choose **Azure Active Directory > App registrations > New application registrati
 Give your application a name, Sign-on  URL and click Create
 
 
-<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Create_app.gif" width="800" height="500" />
+<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Create_app.gif" width="500" height="300" />
 
 ![CREATE APP][logo2]
 
