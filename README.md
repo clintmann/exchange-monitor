@@ -42,13 +42,13 @@ Click **Settings > Keys**
 
 Give your Key a Description and Expiration time and click Save Click Save to Generate the key
 
-<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Keys.gif" width="500" height="300" />
+<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Keys.gif" width="600" height="300" />
 
  
 Our application with be interacting with Microsoft Graph via REST APIs. We will want to assign the appropriate level of permissions to grant acces only to the APIs we need and nothing more. 
 Do this by checking the box next to the access you would like to assign. 
 
-<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Required_permission.gif" width="800" height="500" />
+<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Required_permission.gif" width="800" height="400" />
 
 
 For this application we are going to enable 1 permission for Azure AD and three permissions for Microsoft Graph.
@@ -56,7 +56,7 @@ For this application we are going to enable 1 permission for Azure AD and three 
 **Windows Azure Active Directory API Permissions**
 1. Read directory data
 
-<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Enable_Access_AzureAD.gif" width="800" height="500" />
+<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Enable_Access_AzureAD.gif" width="800" height="400" />
 
 
 **Microsoft Graph API Permissions**
@@ -69,7 +69,7 @@ For this application we are going to enable 1 permission for Azure AD and three 
  
 Finally you must click Grant permissions in order for your choices to take affect.
 
-<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Grant_permissions" width="800" height="500" />
+<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Grant_permissions.gif" width="300" height="300" />
 
 
 For more information take a look at this [tutorial](https://docs.microsoft.com/en-us/azure/active-directory-b2c/tutorial-register-applications#register-a-web-app)
