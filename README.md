@@ -115,6 +115,6 @@ Under the **Settings** menu, make sure to add in the Config variables.
 
 Back under the **Deploy** menu scroll down the **Manual Deploy** to deploy the application
 
-<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Heroku_manual_deploy.gif" width="700" height="400" />
+<img src= "https://github.com/clintmann/exchange-monitor/blob/master/images/Heroku_manual_deploy.gif" width="700" height="300" />
 
 
